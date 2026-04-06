@@ -1437,14 +1437,13 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     if (response.ok) {
-      status.innerHTML = "Message sent 💜✨";
+      status.innerHTML = "Message sent.";
       status.style.color = "#6B4E71";
 
-      status.classList.add("show"); // 👈 HERE
-
+      status.classList.add("show");
     form.reset();
     } else {
-      status.innerHTML = "Oops... something went wrong 😭";
+      status.innerHTML = "Oops... something went wrong.";
       status.style.color = "red";
     }
   });
