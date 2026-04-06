@@ -1,0 +1,1454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Raounak | AI Engineer</title>
+
+<style>
+
+/* ===== COLOR SYSTEM ===== */
+:root {
+  --bg: #FFF6F9;
+  --card: rgba(255,255,255,0.4);
+  --text: #2b2b2b;
+
+  --pink: #ffd6ff;
+  --lavender: #cdb4db;
+  --purple: #b597c7;
+  --blue: #b8c0ff;
+  --sky: #bbd0ff;
+  --grape: #6B4E71;
+  --mauve: #89718D;
+  --glow-soft: rgba(205,180,219,0.25); /* lavender glow */
+  --glow-strong: rgba(181,151,199,0.45); /* purple glow */
+
+}
+
+/* DARK MODE */
+body.dark {
+  --bg: #0f1226;
+  --card: rgba(40, 30, 70, 0.6);
+  --text: #f5f5f5;
+
+  --lavender: #be97c6;
+  --purple: #ccb3e3;
+  --mauve: #4a306d;
+  --grape: #2D1A48;
+}
+body.dark .skill-card,
+body.dark .exp-item,
+body.dark .project-card,
+body.dark .about-box,
+body.dark .contact-form input,
+body.dark .contact-form textarea {
+  background: var(--card);
+  color: var(--text);
+}
+body.dark .navbar {
+  background: rgba(74, 48, 109, 0.4); /* transparent */
+  backdrop-filter: blur(12px);
+  box-shadow: 0 5px 25px rgba(45, 26, 72, 0.4);
+}
+body.dark .skills span {
+  background: #2D1A48;
+  color: #eae6ff;
+}
+body.dark .contact-section {
+  background: var(--bg);
+}
+body.dark .icon {
+  color: #b497d6;
+}
+/* ===== BASE ===== */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  scroll-behavior: smooth;
+  
+}
+body.dark .about-box {
+  background: linear-gradient(135deg, #411774, #4d247f);
+  box-shadow: 0 8px 25px rgba(180,160,255,0.15);
+}
+body.dark .education-icon {
+  background: #1c1630;
+  border: 2px solid #7b5ea7;
+}
+
+body.dark .education-icon i {
+  color: #cbb4ff;
+}
+body.dark .exp-item {
+  background: linear-gradient(135deg, #1a1430, #241a3b);
+  color: #f5f5f5;
+  box-shadow: 0 8px 25px rgba(180,160,255,0.15);
+}
+
+body.dark .exp-item h4 {
+  color: #b8a9d9;
+}
+body.dark .skill-card p {
+  color: #cfc9ff;
+}
+body.dark .contact-card {
+  background: linear-gradient(135deg, rgba(40, 30, 70, 0.6));
+  box-shadow: 0 8px 25px rgba(180,160,255,0.15);
+}
+body.dark .contact-form input,
+body.dark .contact-form textarea {
+  background: #1a1430;
+  color: #f5f5f5;
+}
+
+body.dark .contact-form input::placeholder,
+body.dark .contact-form textarea::placeholder {
+  color: #9f8fc7;
+}
+body.dark .contact-links a {
+  background: rgba(120, 100, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(180, 150, 255, 0.2);
+}
+body.dark .contact-links i {
+  color: #e6dcff;
+}
+body.dark .contact-links a:hover {
+  background: linear-gradient(135deg, #7b5ea7, #5a3f7a);
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 10px 25px #240046;
+}
+
+body.dark .contact-links a:hover i {
+  color: #ffffff;
+}
+body.dark .contact-form button {
+  background: linear-gradient(45deg, var(--mauve), var(--grape));
+  color: white;
+  border-radius: 25px;
+
+  box-shadow: 0 8px 25px #240046;
+}
+
+body.dark .arrow {
+  background: #5a3f7a; /* deep purple */
+  box-shadow: 0 6px 15px rgba(90, 63, 122, 0.6);
+}
+body.dark .arrow::before,
+body.dark .arrow::after,
+body.dark .arrow span::before,
+body.dark .arrow span::after {
+  background: #5a3f7a;
+}
+
+body.dark section {
+  background: radial-gradient(
+    circle at 30% 40%,
+    rgba(190,151,198,0.08),
+    transparent 40%
+  );
+}
+body.dark button:hover {
+  transform: scale(1.06);
+
+  background: linear-gradient(45deg, #7b5ea7, #5a3f7a);
+
+  box-shadow: 
+    0 0 15px rgba(180,160,255,0.4),
+    0 0 30px rgba(120,100,255,0.25),
+    0 8px 25px rgba(90,63,122,0.6);
+}
+/* ===== NAVBAR ===== */
+.navbar {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(12px);
+  padding: 14px 28px;
+  border-radius: 50px;
+  display: flex;
+  gap: 25px;
+  z-index: 1000;
+  box-shadow: 0 5px 20px #89718D;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  transition: 0.3s;
+}
+
+.navbar a:hover {
+  color: var(--purple);
+}
+
+/* ===== HERO ===== */
+/* ===== HERO FULL BACKGROUND ===== */
+.hero {
+  position: relative;
+  height: 100vh;
+
+  /* 🔥 FULL IMAGE BACKGROUND */
+  background: url("illustration.png") no-repeat center right;
+  background-size: contain;
+
+  display: flex;
+  align-items: center;
+  padding: 0 80px;
+}
+/* 🌙 DARK MODE → SAME STYLE, DIFFERENT IMAGE */
+body.dark .hero {
+  background: url("dark-illustration.png") no-repeat center right;
+  background-size: contain;
+}
+body.dark .hero::before {
+  background: linear-gradient(
+    to right,
+    rgba(15,18,38,0.9) 20%,
+    rgba(15,18,38,0.6) 50%,
+    rgba(15,18,38,0.2) 80%,
+    transparent 100%
+  );
+}
+
+/* OVERLAY (VERY IMPORTANT) */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    to right,
+    #fff6f9 20%,
+    rgba(249,245,255,0.6) 50%,
+    rgba(249,245,255,0.2) 80%,
+    transparent 100%
+  );
+}
+
+/* TEXT */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 500px;
+}
+
+.hero-content h1 {
+  font-size: 52px;
+  margin-bottom: 10px; /* reduce space under title */
+  text-shadow: 0 0 20px var(--glow-soft);
+  line-height: 1.1;
+}
+
+.hero-content h2 {
+  color: var(--purple);
+  margin: 10px 0;
+  margin-bottom: 10px;
+  text-shadow: 0 0 12px var(--glow-soft);
+}
+
+.hero-content p {
+  margin: 20px 0;
+  opacity: 0.8;
+}
+
+
+
+@keyframes floatBg {
+  from { transform: translateY(0); }
+  to { transform: translateY(-20px); }
+}
+/* ===== BUTTON ===== */
+button {
+  background: linear-gradient(45deg, var(--mauve), var(--grape));
+  border: none;
+  padding: 12px 26px;
+  border-radius: 30px;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px #89718d;
+}
+
+/* ===== SECTIONS ===== */
+section {
+  padding: 80px 40px;
+  text-align: center;
+  position: relative;
+}
+
+
+/* ===== GLASS CARDS ===== */
+.card {
+  background: var(--card);
+  backdrop-filter: blur(18px);
+  padding: 25px;
+  margin: 15px;
+  border-radius: 25px;
+  display: inline-block;
+  width: 260px;
+  transition: 0.3s;
+  border: 1px solid rgba(200,182,255,0.25);
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.03);
+}
+
+/* ===== PROJECTS ===== */
+/* ===== PROJECTS CAROUSEL ===== */
+.projects-wrapper {
+  position: relative;
+  padding: 0 80px; /* more space = better look */
+}
+
+.projects-container {
+  display: flex;
+  gap: 25px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 20px;
+}
+
+/* hide scrollbar */
+.projects-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* CARD */
+.project-card {
+  min-width: 300px;
+  padding: 25px;
+  border-radius: 25px;
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(12px);
+  text-align: left;
+  transition: 0.3s;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(180,160,255,0.15);
+}
+.project-card h3 {
+  color: var(--purple);
+}
+
+.project-card p {
+  opacity: 0.75;
+}
+/* SKILLS */
+.skills {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap; /* ✅ allows wrapping */
+  gap: 8px; /* clean spacing */
+}
+
+.skills span {
+  background: #f5e9f3;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+
+  white-space: nowrap; /* prevent ugly breaks */
+}
+
+/* ===== CLOUD ARROWS (FIXED) ===== */
+/* ===== CLOUD BUTTON (THICK PLUS STYLE) ===== */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 20px;  /* smaller center */
+  height: 20px;
+  background: var(--lavender);
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 15px; /* arrow size */
+  font-weight: 600;
+  color: #333;
+
+  cursor: pointer;
+  box-shadow: 0 6px 15px rgba(200,182,255,0.4);
+}
+
+/* ===== BIGGER BUBBLES (CROSS EFFECT) ===== */
+.arrow::before,
+.arrow::after {
+  content: "";
+  position: absolute;
+  background: var(--lavender);
+  border-radius: 50%;
+}
+
+/* LEFT */
+.arrow::before {
+  width: 16px;
+  height: 16px;
+  left: -10px;
+}
+
+/* RIGHT */
+.arrow::after {
+  width: 16px;
+  height: 16px;
+  right: -10px;
+}
+
+/* TOP */
+.arrow span::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--lavender);
+  border-radius: 50%;
+}
+
+/* BOTTOM */
+.arrow span::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--lavender);
+  border-radius: 50%;
+}
+
+/* POSITION */
+.arrow.left {
+  left: 20px;
+}
+
+.arrow.right {
+  right: 20px;
+}
+
+/* HOVER */
+.arrow:hover {
+  transform: translateY(-50%) scale(1.15);
+}
+/* TAGS */
+.tags {
+  margin-top: 10px;
+}
+
+.tags span {
+  background: rgba(231,198,255,0.4);
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 12px;
+  margin-right: 5px;
+}
+
+/* ===== SKILLS ===== */
+#skills {
+  padding: 70px 40px;
+  text-align: center;
+}
+
+.skills-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+
+  max-width: 900px;
+  margin: 60px auto;
+}
+
+/* CARD */
+.skill-card {
+  background: #f5e9f3;
+  padding: 25px;
+  border-radius: 20px;
+
+  box-shadow: 0 8px 25px rgba(180,160,255,0.15);
+  transition: 0.3s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow:
+    0 15px 35px rgba(0,0,0,0.15),
+    0 0 25px var(--glow-strong);
+}
+
+/* ICON */
+.icon {
+  width: 35px;
+  height: 35px;
+  margin-bottom: 10px;
+
+  color: var(--purple);   /* 🔥 main color */
+  opacity: 0.9;
+  transition: 0.3s ease;
+}
+
+/* TITLE */
+.skill-card h3 {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+/* TEXT */
+.skill-card p {
+  font-size: 13px;
+  opacity: 0.7; /* 🔥 same logic as project-card */
+}
+.skill-card:hover .icon {
+  color: var(--purple);
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* ===== ABOUT ===== */
+/* ===== ABOUT (CLEAN LAYOUT) ===== */
+#about {
+  text-align: center;
+}
+.about-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  max-width: 550px; /* 🔥 smaller */
+  margin: 60px auto;
+
+  background: #e6d5ea; /* 💜 soft pastel instead of gradient */
+  padding: 30px 30px 25px 120px;
+
+  border-radius: 25px;
+
+  box-shadow: 
+    0 10px 30px rgba(0,0,0,0.1),
+    0 0 20px var(--glow-soft);
+}
+/* IMAGE SIDE */
+.about-left {
+  position: absolute;
+  left: 0px;
+  bottom: 0;   /* 🔥 touches card perfectly */
+}
+
+.about-left img {
+  width: 180px;
+  height: auto;
+  border-radius: 20px;
+  display: block;
+}
+
+.about-right {
+  margin-left: 80px;
+  font-size: 14px;
+  line-height: 1.6;
+  text-align: left;
+}
+.about-right p {
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+/* ===== BLOBS ===== */
+.blob {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  filter: blur(90px);
+  z-index: -1;
+}
+
+.blob1 {
+  background: var(--pink);
+  top: 10%;
+  left: 10%;
+}
+
+.blob2 {
+  background: var(--lavender);
+  bottom: 10%;
+  right: 10%;
+}
+
+/* ===== CONTACT ===== */
+.contact-section {
+  background: #FFF6F9;
+  padding: 100px 20px;
+  text-align: center;
+}
+
+/* MAIN WRAPPER */
+.contact-wrapper {
+  display: flex;
+  gap: 40px;
+
+  max-width: 1100px;
+  margin: 50px auto;
+
+  align-items: stretch; /* 🔥 FIX ALIGNMENT */
+}
+
+/* ===== FORM ===== */
+.contact-form {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  min-width: 0;
+
+}
+
+/* INPUT ROW */
+.input-row {
+  display: flex;
+  gap: 20px;
+}
+
+.input-row input {
+  flex: 1;
+  min-width: 0;
+}
+
+/* INPUT STYLE (🌸 SOFT GIRLY TECH) */
+.contact-form input,
+.contact-form textarea {
+  width: 97%;
+
+  background: #f5e9f3; /* 💖 your color */
+  border: none;
+  border-radius: 14px;
+
+  padding: 14px;
+  font-size: 14px;
+  outline: none;
+
+  color: #6B4E71;
+}
+
+/* PLACEHOLDER */
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #a88b9f;
+}
+
+/* TEXTAREA */
+.contact-form textarea {
+  height: 110px;
+  resize: none;
+}
+
+/* BUTTON */
+.contact-form button {
+  width: fit-content;
+  padding: 10px 22px;
+
+  border-radius: 20px;
+  border: none;
+
+  background: linear-gradient(45deg, var(--mauve), var(--grape));
+  color: white;
+
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.contact-form button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px #89718d;
+}
+
+/* ===== CARD ===== */
+.contact-card {
+  flex: 1;
+  max-width: 280px;
+
+  padding: 30px 25px;
+  border-radius: 25px;
+
+  background: linear-gradient(135deg ,#89718d); /* 🍇 palette */
+
+  color: white;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  box-shadow: 
+    0 10px 30px rgba(0,0,0,0.1),
+    0 0 20px var(--glow-soft);
+  justify-content: flex-start;
+  height: fit-content;
+}
+
+/* TITLE */
+.contact-card h3 {
+  font-size: 22px;
+  margin-bottom: 5px;
+}
+
+/* TEXT */
+.contact-card p {
+  font-size: 14px;
+  opacity: 0.9;
+  line-height: 1.5;
+  margin: 5px 0;
+  margin-bottom: 5px;
+
+
+}
+
+/* ICON LINKS */
+.contact-links {
+  display: flex;
+  gap: 15px;
+  margin-top: auto;
+  
+}
+
+/* ICON BOX */
+.contact-links a {
+  text-decoration: none !important;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #6b4e71;
+  padding: 12px;
+
+  border-radius: 12px;
+  transition: 0.3s;
+}
+
+/* HOVER ✨ */
+.contact-links a:hover {
+  transform: translateY(-4px);
+  background: #FCE1EB;
+}
+
+/* ICON */
+.contact-links i {
+  font-size: 20px;
+  color: #FFF6F9; /* soft light */
+  transition: 0.3s;
+}
+
+.contact-links a:hover i {
+  color: #6B4E71; /* 🍇 hover */
+}
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.info-item i {
+  color: #ffd6ff;
+  font-size: 14px;
+}
+
+/* CARD BUTTON */
+.card-btn {
+  margin-top: auto;
+
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+
+  background: #2a1f3d;
+  color: white;
+
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.card-btn:hover {
+  background: #1c1630;
+}
+
+
+/* ===== EDUCATION TIMELINE ===== */
+.education-container {
+  max-width: 800px;
+  margin: auto;
+  position: relative;
+  text-align: left;
+}
+
+/* vertical line */
+.education-container::before {
+  content: "";
+  position: absolute;
+  left: 18px; /* 🎯 centered with icon */
+  top: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--lavender);
+}
+
+/* each item */
+.education-item {
+  position: relative;
+  margin-bottom: 45px;
+  padding-left: 50px; /* 🎯 space for icon */
+  transition: 0.3s ease;
+}
+
+/* ICON CIRCLE 🎓 */
+.education-icon {
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  width: 36px;
+  height: 36px;
+
+  background: #fff;
+  border: 3px solid var(--purple);
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+.education-item:hover {
+  transform: translateX(10px);
+}
+
+.education-item:hover .education-title {
+  color: var(--purple);
+}
+
+/* ICON */
+.education-icon i {
+  font-size: 14px;
+  color: var(--purple);
+}
+
+/* CONTENT */
+.education-content {
+  margin: 0; /* ❌ remove duplicates */
+}
+
+/* YEAR */
+.education-year {
+  font-weight: 700;
+  color: var(--purple);
+  margin-bottom: 6px;
+}
+
+/* TITLE */
+.education-title {
+  font-weight: 700;
+  font-size: 18px;
+  transition: 0.3s ease;
+}
+
+/* SUBTITLE */
+.education-sub {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* ===== EXPERIENCE SECTION ===== */
+#experience {
+  padding: 70px 40px;
+  text-align: center;
+}
+
+.experience-container {
+  max-width: 700px;
+  margin: 60px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* EACH ITEM */
+.exp-item {
+  text-align: left;
+  background: #f5e9f3;
+  padding: 25px 30px;
+  border-radius: 20px;
+
+  box-shadow: 
+    0 10px 30px rgba(0,0,0,0.1),
+    0 0 20px var(--glow-soft);
+
+  transition: 0.3s ease;
+}
+
+/* HOVER ✨ */
+.exp-item:hover {
+  transform: translateY(-5px);
+}
+
+/* DATE */
+.exp-date {
+  font-size: 13px;
+  color: #6b4e71;
+  font-weight: 600;
+}
+
+/* TITLE */
+.exp-item h3 {
+  margin: 5px 0;
+  font-size: 18px;
+}
+
+/* COMPANY */
+.exp-item h4 {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+/* DESCRIPTION */
+.exp-item p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ===== WAVE TRANSITION ===== */
+.wave-top {
+  position: relative;
+  margin-top: -120px; /* adjust overlap */
+  z-index: 2;
+}
+
+.wave-top svg {
+  display: block;
+  width: 100%;
+  height: 120px;
+}
+
+.wave-top path {
+  fill: var(--bg);
+}
+/* ===== DARK MODE BUTTON ===== */
+.toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+
+  z-index: 999; /* 🔥 THIS FIXES EVERYTHING */
+}
+#form-status {
+  margin-top: 20px;
+  font-size: 14px;
+  text-align: left; /* or center if you prefer */
+  opacity: 0.9;
+}
+#form-status {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+#form-status.show {
+  opacity: 1;
+}
+
+/* ===== TYPOGRAPHY ===== */
+h1 {
+  font-size: 42px;
+}
+
+h2 {
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+p {
+  opacity: 0.8;
+}
+/* Titles */
+h1, h2, h3 {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+}
+.intro {
+  font-size: 14px;
+  opacity: 0.9;
+  line-height: 1.5;
+}
+
+
+
+</style>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+<!-- BLOBS -->
+<div class="blob blob1"></div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <a href="#home">Home</a>
+  <a href="#about">About</a>
+  <a href="#education">Education</a>
+  <a href="#experience">Experience</a>
+  <a href="#skills">Skills</a>
+  <a href="#projects">Projects</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<!-- HERO -->
+<section id="home" class="hero">
+
+  <div class="hero-content">
+    <h1>Hi, I'm Raounak El Gourma</h1>
+    <h2>AI & Computer Vision Engineer</h2>
+    <button onclick="location.href='#projects'">View Projects</button>
+  </div>
+
+</section>
+<div class="wave-top">
+  <svg viewBox="0 0 1440 200" preserveAspectRatio="none">
+    <path d="M0,120 C300,40 600,200 900,120 C1200,40 1400,160 1440,120 L1440,200 L0,200 Z"></path>
+  </svg>
+</div>
+<!-- ABOUT -->
+<section id="about">
+  <h1>A little About Me </h1>
+
+  <div class="about-box">
+
+    <div class="about-left">
+      <img src="photonoback.png">
+    </div>
+
+    <div class="about-right">
+      <p>
+        I’m an AI & Computer Vision Engineer passionate about building intelligent systems.  
+        I work on real-world projects using AI to solve impactful problems.
+      </p>
+
+      <p>
+        Currently, I specialize in computer vision applications, including object detection, image analysis, and intelligent visual systems.
+      </p>
+    </div>
+
+  </div>
+</section>
+<!-- EDUCATION -->
+<section id="education">
+  <h1>Education</h1>
+
+  <div class="education-container">
+
+    <div class="education-item">
+      <div class="education-icon">
+        <i class="fas fa-graduation-cap"></i>
+      </div>
+      <div class="education-content">
+        <div class="education-year">2024 – 2026</div>
+        <div class="education-title">
+          Master of Excellence in Artificial Intelligence & IoT (AI Track)
+        </div>
+        <div class="education-sub">
+          Center of Excellence in Automotive & Aeronautics, Faculty of Sciences
+        </div>
+      </div>
+    </div>
+
+    <div class="education-item">
+      <div class="education-icon">
+        <i class="fas fa-graduation-cap"></i>
+      </div>
+      <div class="education-content">
+        <div class="education-year">2023 – 2024</div>
+        <div class="education-title">
+          Bachelor of Excellence in Artificial Intelligence & Data Engineering
+        </div>
+        <div class="education-sub">
+          Center of Excellence in Automotive & Aeronautics, Faculty of Sciences
+        </div>
+      </div>
+    </div>
+
+    <div class="education-item">
+      <div class="education-icon">
+        <i class="fas fa-graduation-cap"></i>
+      </div>
+      <div class="education-content">
+        <div class="education-year">2021 – 2023</div>
+        <div class="education-title">
+          DUT in Embedded Computer Engineering
+        </div>
+        <div class="education-sub">
+          Higher School of Technology (EST), Oujda
+        </div>
+      </div>
+    </div>
+
+    <div class="education-item">
+      <div class="education-icon">
+        <i class="fas fa-graduation-cap"></i>
+      </div>
+      <div class="education-content">
+        <div class="education-year">2021</div>
+        <div class="education-title">
+          Baccalauréat in Physical Sciences and Chemistry
+        </div>
+        <div class="education-sub">
+          Lycée Omar Ibn Abdel-Aziz, Oujda
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <h1>Professional Experience</h1>
+
+  <div class="experience-container">
+
+    <div class="exp-item">
+      <span class="exp-date">2026 – Present</span>
+      <h3>Computer Vision Engineer Intern</h3>
+      <h4>Nextronic / ABA Technology</h4>
+      <p>
+        Developing a computer vision system for clothing attribute recognition.
+      </p>
+    </div>
+
+    <div class="exp-item">
+      <span class="exp-date">Jul – Sep 2025</span>
+      <h3>Deep Learning & Computer Vision Intern</h3>
+      <h4>EMS Maroc</h4>
+      <p>
+        Built datasets for Moroccan license plates and SIM detection, applied
+        preprocessing and augmentation, and developed a YOLO + OCR pipeline
+        for real-time detection with a web demo interface.
+      </p>
+    </div>
+
+    <div class="exp-item">
+      <span class="exp-date">Jul – Aug 2025</span>
+      <h3>Data Science Intern</h3>
+      <h4>Omni Consulting</h4>
+      <p>
+        Developed an AI-powered CV matching system to compare resumes with job
+        descriptions and assist automated HR pre-screening.
+      </p>
+    </div>
+
+    <div class="exp-item">
+      <span class="exp-date">Jul 2024</span>
+      <h3>Deep learning Intern</h3>
+      <h4>CHU Oujda</h4>
+      <p>
+        Contributed to a CNN model for diabetic retinopathy detection,
+        including preprocessing and evaluation of medical imaging datasets.
+      </p>
+    </div>
+
+    <div class="exp-item">
+      <span class="exp-date">Apr – May 2023</span>
+      <h3>Final Year Intern (Embedded Systems)</h3>
+      <h4>Prefecture Oujda-Angad</h4>
+      <p>
+        Designed a smart safe system using Arduino with biometric authentication
+        and implemented embedded access control mechanisms.
+      </p>
+    </div>
+
+    <div class="exp-item">
+      <span class="exp-date">Jun 2021</span>
+      <h3>Initiation Intern</h3>
+      <h4>Attawfiq Micro-Finance</h4>
+      <p>
+        Assisted in IT support and internal systems operations,
+        gaining foundational experience in enterprise environments.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- SKILLS -->
+<section id="skills">
+  <h1>Skills</h1>
+
+  <div class="skills-container">
+
+    <!-- Programming -->
+    <div class="skill-card">
+      <i data-lucide="code" class="icon prog"></i>
+      <h3>Programming</h3>
+      <p>Python, C, C++, Java, SQL</p>
+    </div>
+
+    <!-- AI / ML -->
+    <div class="skill-card">
+      <i data-lucide="cpu" class="icon ai"></i>
+      <h3>AI / ML</h3>
+      <p>PyTorch, TensorFlow, Keras, Scikit-learn, NLTK, spaCy</p>
+    </div>
+
+    <!-- Computer Vision -->
+    <div class="skill-card">
+      <i data-lucide="eye" class="icon cv"></i>
+      <h3>Computer Vision</h3>
+      <p>OpenCV, YOLOv5/YOLOv8, OCR</p>
+    </div>
+
+    <!-- Data -->
+    <div class="skill-card">
+      <i data-lucide="bar-chart" class="icon data"></i>
+      <h3>Data</h3>
+      <p>NumPy, Pandas, Matplotlib, Seaborn</p>
+    </div>
+
+    <!-- Web -->
+    <div class="skill-card">
+      <i data-lucide="globe" class="icon web"></i>
+      <h3>Web</h3>
+      <p>Flask, Streamlit, HTML, CSS, REST APIs</p>
+    </div>
+
+    <!-- Tools -->
+    <div class="skill-card">
+      <i data-lucide="wrench" class="icon tools"></i>
+      <h3>Tools</h3>
+      <p>Git, GitHub, Linux, Jupyter, LabelImg</p>
+    </div>
+
+  </div>
+</section>
+
+</section>
+<!-- PROJECTS -->
+<section id="projects">
+  <h1>Projects</h1>
+
+  <div class="projects-wrapper">
+
+    <!-- LEFT ARROW -->
+    <div class="arrow left" onclick="scrollProjects(-1)">
+        <span>«</span>
+    </div>
+
+    <!-- PROJECTS -->
+    <div class="projects-container" id="projectsScroll">
+
+      <div class="project-card">
+        <h3>Plate & SIM Recognition</h3>
+        <p>Flask-based web application combining YOLOv8 and EasyOCR for real-time license plate and SIM card number detection from images and live streams.
+        </p>
+        <div class="skills">
+          <span>YOLOv8</span>
+          <span>EasyOCR</span>
+          <span>OpenCV</span>
+          <span>Flask</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <h3>Smart Mouwatin</h3>
+        <p>
+            Citizen-focused platform helping Moroccan users access administrative procedures, required documents, and locations with voice and text interaction.
+        </p>
+        <div class="skills">
+            <span>Fast API</span>
+            <span>LangChain (Rag)</span>
+            <span>ChromaDb</span>
+            <span>sentenceTransformers</span>
+            <span>Gemini API</span>
+            </div>
+        </div>
+
+      <div class="project-card">
+        <h3>Parcel Volume Estimation</h3>
+        <p>Computer vision system for automatic parcel volume estimation using image processing, K-Means segmentation, and reference-based calibration for real-world measurements.</p>
+        <div class="skills">
+          <span>OpenCV</span>
+          <span>K-means</span>
+          <span>Image Processing</span>
+          <span>Calibration</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <h3>Agrobot</h3>
+        <p>AI-powered crop recommendation system using soil and environmental data with Gradient Boosting, combined with real-time drought risk analysis from weather APIs.</p>
+        <div class="skills">
+          <span>Scikit-learn</span>
+          <span>Machine Learning</span>
+          <span>Random Forest</span>
+          <span>Flask</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <h3>CV Matcher</h3>
+        <p>
+            AI system for CV-job matching using TF-IDF, cosine similarity, and LSA to rank candidates based on skill and semantic relevance.
+        </p>
+        <div class="skills">
+          <span>NLP</span>
+          <span>TF-IDF</span>
+          <span>Cosine Similarity</span>
+          <span>Streamlit</span>
+        </div>
+      </div>
+    </div>
+    <!-- RIGHT ARROW -->
+    <div class="arrow right" onclick="scrollProjects(1)">
+        <span>»</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+
+  <h1>Send Me Your Message</h1>
+
+  <div class="contact-wrapper">
+
+    <!-- FORM -->
+    <form id="contactForm" class="contact-form" action="https://formspree.io/f/xqegwddp" method="POST">
+      <div class="input-row">
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="email" name="email" placeholder="Email" required>
+      </div>
+
+      <input type="text" name="subject" placeholder="Subject">
+      <textarea name="message" placeholder="Message" required></textarea>
+
+      <button>Send Message</button>
+      <p id="form-status"></p>
+    </form>
+
+    <!-- CARD -->
+    <div class="contact-card">
+      <h3>Let’s connect! </h3>
+      <p>Open to AI projects & collaborations.</p>
+      <div class="contact-info">
+        <div class="info-item">
+          <i class="fas fa-envelope"></i>
+            <span>elgraounak@gmail.com</span>
+        </div>
+        <div class="info-item">
+          <i class="fas fa-map-marker-alt"></i>
+            <span>Morocco</span>
+        </div>
+      </div>
+
+      <div class="contact-links">
+        <a href="https://github.com/RaounakElGourma" target="_blank" title="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+
+        <a href="https://www.linkedin.com/in/raounak-el-gourma/" target="_blank" title="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+
+        <a href="mailto:elgraounak@gmail.com" title="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+<!-- DARK MODE -->
+<button class="toggle" onclick="toggleMode()">🌙</button>
+
+<script>
+function toggleMode() {
+  document.body.classList.toggle("dark");
+}
+</script>
+<script>
+function scrollProjects(direction) {
+  const container = document.getElementById("projectsScroll");
+
+  container.scrollBy({
+    left: direction * 320,
+    behavior: "smooth"
+  });
+}
+</script>
+<script>
+  lucide.createIcons();
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+  const form = document.getElementById("contactForm");
+  const status = document.getElementById("form-status");
+
+  form.addEventListener("submit", async function(e) {
+    e.preventDefault(); // 🚫 stop redirect
+
+    const data = new FormData(form);
+
+    const response = await fetch(form.action, {
+      method: form.method,
+      body: data,
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+
+    if (response.ok) {
+      status.innerHTML = "Message sent 💜✨";
+      status.style.color = "#6B4E71";
+
+      status.classList.add("show"); // 👈 HERE
+
+    form.reset();
+    } else {
+      status.innerHTML = "Oops... something went wrong 😭";
+      status.style.color = "red";
+    }
+  });
+
+});
+</script>
+</body>
+</html>
