@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Raounak | AI Engineer</title>
 
 <style>
@@ -469,58 +470,108 @@ section {
   text-align: center;
 }
 
+.skills-intro {
+  max-width: 620px;
+  margin: 10px auto 0;
+  font-size: 14px;
+  opacity: 0.72;
+}
+
 .skills-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-
-  max-width: 900px;
-  margin: 60px auto;
+  gap: 22px;
+  max-width: 980px;
+  margin: 42px auto 0;
 }
 
-/* CARD */
 .skill-card {
   background: #f5e9f3;
-  padding: 25px;
+  padding: 22px;
   border-radius: 20px;
-
+  text-align: left;
   box-shadow: 0 8px 25px rgba(180,160,255,0.15);
   transition: 0.3s ease;
 }
 
 .skill-card:hover {
-  transform: translateY(-8px) scale(1.02);
+  transform: translateY(-7px);
   box-shadow:
-    0 15px 35px rgba(0,0,0,0.15),
-    0 0 25px var(--glow-strong);
+    0 15px 35px rgba(0,0,0,0.13),
+    0 0 22px var(--glow-strong);
 }
 
-/* ICON */
-.icon {
-  width: 35px;
-  height: 35px;
-  margin-bottom: 10px;
+.skill-card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
 
-  color: var(--purple);   /* 🔥 main color */
-  opacity: 0.9;
+.icon {
+  width: 29px;
+  height: 29px;
+  margin: 0;
+  color: var(--purple);
+  opacity: 0.95;
   transition: 0.3s ease;
 }
 
-/* TITLE */
 .skill-card h3 {
   font-size: 16px;
-  margin-bottom: 8px;
+  margin: 0;
 }
 
-/* TEXT */
-.skill-card p {
-  font-size: 13px;
-  opacity: 0.7; /* 🔥 same logic as project-card */
-}
 .skill-card:hover .icon {
-  color: var(--purple);
-  opacity: 1;
   transform: scale(1.1);
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.tech-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 28px;
+  padding: 6px 10px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.72);
+  border: 1px solid rgba(181,151,199,0.22);
+  font-size: 11.5px;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: 0.25s ease;
+}
+
+.tech-chip:hover {
+  transform: translateY(-2px);
+  background: rgba(255,255,255,0.95);
+}
+
+.tech-chip img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+.tech-chip .mini-icon {
+  width: 16px;
+  height: 16px;
+  color: var(--purple);
+}
+
+body.dark .tech-chip {
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(203,180,255,0.16);
+  color: #f1edff;
+}
+
+body.dark .tech-chip:hover {
+  background: rgba(255,255,255,0.12);
 }
 
 /* ===== ABOUT ===== */
@@ -634,11 +685,11 @@ section {
 .contact-form input,
 .contact-form textarea {
   width: 97%;
-
+  font-family: 'Poppins', sans-serif;
   background: #f5e9f3; /* 💖 your color */
   border: none;
   border-radius: 14px;
-  font-family: 'Poppins', sans-serif;
+
   padding: 14px;
   font-size: 14px;
   outline: none;
@@ -942,6 +993,37 @@ section {
   line-height: 1.6;
 }
 
+.exp-details {
+  margin: 14px 0 0;
+  padding-left: 20px;
+}
+
+.exp-details li {
+  margin-bottom: 9px;
+  font-size: 14px;
+  line-height: 1.6;
+  opacity: 0.84;
+}
+
+.skill-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+@media (max-width: 900px) {
+  .skills-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 620px) {
+  .skills-container {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ===== WAVE TRANSITION ===== */
 .wave-top {
   position: relative;
@@ -1011,11 +1093,9 @@ h1, h2, h3 {
 <script src="https://unpkg.com/lucide@latest"></script>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body class="dark">
-
 
 <!-- BLOBS -->
 <div class="blob blob1"></div>
@@ -1085,7 +1165,7 @@ h1, h2, h3 {
           Master of Excellence in Artificial Intelligence & IoT (AI Track)
         </div>
         <div class="education-sub">
-          Center of Excellence in Automotive & Aeronautics, Faculty of Sciences
+          Center of Excellence in Automotive & Aeronautics, Faculty of Sciences, Ibn Tofail University, Kenitra
         </div>
       </div>
     </div>
@@ -1097,10 +1177,10 @@ h1, h2, h3 {
       <div class="education-content">
         <div class="education-year">2023 – 2024</div>
         <div class="education-title">
-          Bachelor of Excellence in Artificial Intelligence & Data Engineering
+          Bachelor of Excellence in Artificial Intelligence & Data Engineering 
         </div>
         <div class="education-sub">
-          Center of Excellence in Automotive & Aeronautics, Faculty of Sciences
+          Center of Excellence in Automotive & Aeronautics, Faculty of Sciences, Ibn Tofail University, Kenitra
         </div>
       </div>
     </div>
@@ -1145,12 +1225,15 @@ h1, h2, h3 {
   <div class="experience-container">
 
     <div class="exp-item">
-      <span class="exp-date">2026 – Present</span>
-      <h3>Computer Vision Engineer Intern</h3>
+      <span class="exp-date">Feb – Jul 2026</span>
+      <h3>Computer Vision Engineer Intern — Final-Year Project</h3>
       <h4>Nextronic / ABA Technology</h4>
-      <p>
-        Developing a computer vision system for clothing attribute recognition.
-      </p>
+      <ul class="exp-details">
+        <li>Designed and developed <strong>TrackWear</strong> as my final-year project, a multi-camera surveillance system for real-time clothing attribute recognition and biometric-free person re-identification across fisheye and top-view cameras.</li>
+        <li>Fine-tuned <strong>YOLOv8m</strong> for person detection and integrated <strong>ByteTrack</strong> for stable multi-object tracking and track lifecycle management.</li>
+        <li>Built a modular visual analysis pipeline using <strong>EfficientNet B2/B3</strong>, <strong>OpenCLIP</strong>, KMeans in LAB color space, and <strong>OSNet</strong> embeddings with cosine similarity for cross-camera matching.</li>
+        <li>Engineered the end-to-end detection, tracking, classification, storage, and monitoring pipeline with <strong>SQLite</strong>, <strong>Streamlit</strong>, and live <strong>RTSP</strong> preview.</li>
+      </ul>
     </div>
 
     <div class="exp-item">
@@ -1210,56 +1293,103 @@ h1, h2, h3 {
 
 <!-- SKILLS -->
 <section id="skills">
-  <h1>Skills</h1>
+  <h1>Skills &amp; Technologies</h1>
+  <p class="skills-intro">A focused view of the technologies I use to build AI, computer vision and data-driven applications.</p>
 
   <div class="skills-container">
 
-    <!-- Programming -->
     <div class="skill-card">
-      <i data-lucide="code" class="icon prog"></i>
-      <h3>Programming</h3>
-      <p>Python, C, C++, Java, SQL</p>
+      <div class="skill-card-header">
+        <i data-lucide="code-2" class="icon"></i>
+        <h3>Programming</h3>
+      </div>
+      <div class="skill-tags">
+        <span class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">Python</span>
+        <span class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++">C / C++</span>
+        <span class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java">Java</span>
+        <span class="tech-chip"><i data-lucide="database" class="mini-icon"></i>SQL</span>
+      </div>
     </div>
 
-    <!-- AI / ML -->
     <div class="skill-card">
-      <i data-lucide="cpu" class="icon ai"></i>
-      <h3>AI / ML</h3>
-      <p>PyTorch, TensorFlow, Keras, Scikit-learn, NLTK, spaCy</p>
+      <div class="skill-card-header">
+        <i data-lucide="scan-eye" class="icon"></i>
+        <h3>Computer Vision</h3>
+      </div>
+      <div class="skill-tags">
+        <span class="tech-chip"><span>YOLOv8 / v11</span></span>
+        <span class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg" alt="OpenCV">OpenCV</span>
+        <span class="tech-chip">ByteTrack</span>
+        <span class="tech-chip" title="ResNet, EfficientNet, VGG, MobileNet and other CNN families">CNN Architectures</span>
+        <span class="tech-chip">OSNet Re-ID</span>
+        <span class="tech-chip">OCR</span>
+        <span class="tech-chip"><i data-lucide="video" class="mini-icon"></i>Video Processing</span>
+      </div>
     </div>
 
-    <!-- Computer Vision -->
     <div class="skill-card">
-      <i data-lucide="eye" class="icon cv"></i>
-      <h3>Computer Vision</h3>
-      <p>OpenCV, YOLOv5/YOLOv8, OCR</p>
+      <div class="skill-card-header">
+        <i data-lucide="brain-circuit" class="icon"></i>
+        <h3>Deep Learning &amp; AI</h3>
+      </div>
+      <div class="skill-tags">
+        <span class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="PyTorch">PyTorch</span>
+        <span class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow">TensorFlow</span>
+        <span class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/keras/keras-original.svg" alt="Keras">Keras</span>
+        <span class="tech-chip">OpenCLIP</span>
+        <span class="tech-chip">Hugging Face</span>
+        <span class="tech-chip">Generative AI</span>
+      </div>
     </div>
 
-    <!-- Data -->
     <div class="skill-card">
-      <i data-lucide="bar-chart" class="icon data"></i>
-      <h3>Data</h3>
-      <p>NumPy, Pandas, Matplotlib, Seaborn</p>
+      <div class="skill-card-header">
+        <i data-lucide="chart-no-axes-combined" class="icon"></i>
+        <h3>Data Science</h3>
+      </div>
+      <div class="skill-tags">
+        <span class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="NumPy">NumPy</span>
+        <span class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas">Pandas</span>
+        <span class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg" alt="Scikit-learn">Scikit-learn</span>
+        <span class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matplotlib/matplotlib-original.svg" alt="Matplotlib">Matplotlib</span>
+        <span class="tech-chip"><img src="https://devicons.io/devicons/icons/seaborn-icon.svg" alt="Seaborn" onerror="this.onerror=null;this.src='https://seaborn.pydata.org/_images/logo-mark-lightbg.svg';">Seaborn</span>
+        <span class="tech-chip">EDA</span>
+      </div>
     </div>
 
-    <!-- Web -->
     <div class="skill-card">
-      <i data-lucide="globe" class="icon web"></i>
-      <h3>Web</h3>
-      <p>Flask, Streamlit, HTML, CSS, REST APIs</p>
+      <div class="skill-card-header">
+        <i data-lucide="braces" class="icon"></i>
+        <h3>Web &amp; APIs</h3>
+      </div>
+      <div class="skill-tags">
+        <span class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" alt="FastAPI">FastAPI</span>
+        <span class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" alt="Flask">Flask</span>
+        <span class="tech-chip"><img src="https://cdn.simpleicons.org/streamlit" alt="Streamlit">Streamlit</span>
+        <span class="tech-chip"><i data-lucide="plug" class="mini-icon"></i>REST APIs</span>
+        <span class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML">HTML / CSS</span>
+      </div>
     </div>
 
-    <!-- Tools -->
     <div class="skill-card">
-      <i data-lucide="wrench" class="icon tools"></i>
-      <h3>Tools</h3>
-      <p>Git, GitHub, Linux, Jupyter, LabelImg</p>
+      <div class="skill-card-header">
+        <i data-lucide="wrench" class="icon"></i>
+        <h3>Tools &amp; Databases</h3>
+      </div>
+      <div class="skill-tags">
+        <span class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git">Git</span>
+        <span class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub">GitHub</span>
+        <span class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux">Linux</span>
+        <span class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg" alt="Jupyter">Jupyter</span>
+        <span class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="Visual Studio Code">VS Code</span>
+        <span class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL">MySQL</span>
+        <span class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg" alt="SQLite">SQLite</span>
+      </div>
     </div>
 
   </div>
 </section>
 
-</section>
 <!-- PROJECTS -->
 <section id="projects">
   <h1>Projects</h1>
@@ -1291,7 +1421,7 @@ h1, h2, h3 {
             Citizen-focused platform helping Moroccan users access administrative procedures, required documents, and locations with voice and text interaction.
         </p>
         <div class="skills">
-            <span>Fast API</span>
+            <span>FastAPI</span>
             <span>LangChain (Rag)</span>
             <span>ChromaDb</span>
             <span>sentenceTransformers</span>
@@ -1441,6 +1571,7 @@ document.addEventListener("DOMContentLoaded", function() {
       status.style.color = "#6B4E71";
 
       status.classList.add("show");
+
     form.reset();
     } else {
       status.innerHTML = "Oops... something went wrong.";
