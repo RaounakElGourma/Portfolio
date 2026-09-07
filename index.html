@@ -4,7 +4,12 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Raounak | AI Engineer</title>
+<title>Raounak El Gourma | AI & Machine Learning Engineer</title>
+
+<meta
+  name="description"
+  content="Portfolio of Raounak El Gourma, AI & Machine Learning Engineer specializing in Computer Vision, Deep Learning, Data Science and Generative AI."
+/>
 <style>
 
 /* ===== COLOR SYSTEM ===== */
@@ -125,11 +130,10 @@ body.dark .contact-links a:hover i {
   color: #ffffff;
 }
 body.dark .contact-form button {
-  background: linear-gradient(45deg, var(--mauve), var(--grape));
-  color: white;
-  border-radius: 25px;
-
-  box-shadow: 0 8px 25px #240046;
+  background: rgba(90, 59, 118, 0.10);
+  border-color: #b08bc5;
+  color: #e1cbea;
+  box-shadow: none;
 }
 
 body.dark .arrow {
@@ -160,105 +164,494 @@ body.dark button:hover {
     0 0 30px rgba(120,100,255,0.25),
     0 8px 25px rgba(90,63,122,0.6);
 }
-/* ===== NAVBAR ===== */
+/* =========================================================
+   NAVBAR
+========================================================= */
+
 .navbar {
   position: fixed;
-  top: 20px;
+  top: 28px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(255,255,255,0.6);
-  backdrop-filter: blur(12px);
-  padding: 14px 28px;
-  border-radius: 50px;
-  display: flex;
-  gap: 25px;
+
   z-index: 1000;
-  box-shadow: 0 5px 20px #89718D;
-}
-
-.navbar a {
-  text-decoration: none;
-  color: var(--text);
-  font-weight: 500;
-  font-size: 14px;
-  letter-spacing: 0.5px;
-  transition: 0.3s;
-}
-
-.navbar a:hover {
-  color: var(--purple);
-}
-
-/* ===== HERO ===== */
-/* ===== HERO FULL BACKGROUND ===== */
-.hero {
-  position: relative;
-  height: 100vh;
-
-  /* 🔥 FULL IMAGE BACKGROUND */
-  background: url("illustration.png") no-repeat center right;
-  background-size: contain;
 
   display: flex;
   align-items: center;
-  padding: 0 80px;
-}
-/* 🌙 DARK MODE → SAME STYLE, DIFFERENT IMAGE */
-body.dark .hero {
-  background: url("dark-illustration.png") no-repeat center right;
-  background-size: contain;
-}
-body.dark .hero::before {
-  background: linear-gradient(
-    to right,
-    rgba(15,18,38,0.9) 20%,
-    rgba(15,18,38,0.6) 50%,
-    rgba(15,18,38,0.2) 80%,
-    transparent 100%
-  );
+  justify-content: center;
+  gap: 34px;
+
+  padding: 16px 38px;
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 999px;
+
+  background: rgba(54, 36, 82, 0.62);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  box-shadow:
+    0 10px 30px rgba(12, 8, 35, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
-/* OVERLAY (VERY IMPORTANT) */
+.navbar a {
+  position: relative;
+
+  color: rgba(255, 255, 255, 0.90);
+
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+
+  letter-spacing: 0.2px;
+
+  text-decoration: none;
+
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.navbar a:hover {
+  color: #d8bee8;
+  transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+  position: relative;
+
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+
+  padding:
+    110px
+    clamp(55px, 6vw, 120px)
+    60px;
+
+  overflow: hidden;
+
+  background:
+    url("illustration.png")
+    no-repeat
+    center right;
+
+  background-size: contain;
+}
+
+
+/* =========================================================
+   DARK HERO BACKGROUND
+========================================================= */
+
+body.dark .hero {
+  background:
+    url("dark-illustration.png")
+    no-repeat
+    center right;
+
+  background-size: contain;
+}
+
+
+/* =========================================================
+   HERO OVERLAY
+   Makes left side readable while preserving illustration
+========================================================= */
+
 .hero::before {
   content: "";
+
   position: absolute;
   inset: 0;
 
+  z-index: 0;
+
+  pointer-events: none;
+
   background: linear-gradient(
-    to right,
-    #fff6f9 20%,
-    rgba(249,245,255,0.6) 50%,
-    rgba(249,245,255,0.2) 80%,
-    transparent 100%
+    90deg,
+    rgba(255, 246, 249, 0.98) 0%,
+    rgba(255, 246, 249, 0.92) 27%,
+    rgba(255, 246, 249, 0.62) 48%,
+    rgba(255, 246, 249, 0.10) 70%,
+    transparent 84%
   );
 }
 
-/* TEXT */
+body.dark .hero::before {
+  background: linear-gradient(
+    90deg,
+    rgba(15, 18, 38, 0.98) 0%,
+    rgba(15, 18, 38, 0.93) 28%,
+    rgba(15, 18, 38, 0.68) 48%,
+    rgba(15, 18, 38, 0.20) 70%,
+    transparent 86%
+  );
+}
+
+
+/* =========================================================
+   HERO CONTENT
+========================================================= */
+
 .hero-content {
   position: relative;
   z-index: 2;
-  max-width: 500px;
+
+  width: min(690px, 52vw);
+
+  margin: 0;
+
+  text-align: left;
+
+  transform: translateY(12px);
 }
+
+
+/* =========================================================
+   NAME
+========================================================= */
 
 .hero-content h1 {
-  font-size: 52px;
-  margin-bottom: 10px; /* reduce space under title */
-  text-shadow: 0 0 20px var(--glow-soft);
-  line-height: 1.1;
+  margin: 0;
+
+  font-family: 'Quicksand', sans-serif;
+
+  font-size: clamp(50px, 4.6vw, 72px);
+  font-weight: 600;
+
+  line-height: 1.02;
+
+  letter-spacing: -2px;
+
+  color: #342a3c;
 }
+
+body.dark .hero-content h1 {
+  color: #f7f4fa;
+
+  text-shadow:
+    0 0 25px rgba(205, 180, 219, 0.08);
+}
+
+
+/* =========================================================
+   POSITION TITLE
+========================================================= */
 
 .hero-content h2 {
-  color: var(--purple);
-  margin: 10px 0;
-  margin-bottom: 10px;
-  text-shadow: 0 0 12px var(--glow-soft);
+  margin: 18px 0 0;
+
+  font-family: 'Quicksand', sans-serif;
+
+  font-size: clamp(23px, 2vw, 31px);
+  font-weight: 600;
+
+  line-height: 1.2;
+
+  color: #826590;
+
+  opacity: 1;
 }
 
-.hero-content p {
-  margin: 20px 0;
-  opacity: 0.8;
+body.dark .hero-content h2 {
+  color: #c9acd9;
+
+  text-shadow:
+    0 0 14px rgba(205, 180, 219, 0.10);
 }
 
+
+/* =========================================================
+   SPECIALTIES
+========================================================= */
+
+.hero-specialties {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 10px;
+
+  margin-top: 24px;
+
+  font-family: 'Poppins', sans-serif;
+
+  font-size: 16px;
+  font-weight: 400;
+
+  line-height: 1.5;
+
+  color: rgba(52, 42, 60, 0.76);
+}
+
+body.dark .hero-specialties {
+  color: rgba(245, 241, 248, 0.82);
+}
+
+.hero-specialties .dot {
+  margin: 0 2px;
+
+  color: #a884bb;
+
+  font-size: 10px;
+}
+
+
+/* =========================================================
+   VIEW PROJECTS BUTTON
+========================================================= */
+
+.hero-project-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+
+  margin-top: 34px;
+
+  padding: 12px 24px;
+
+  border: 1.5px solid #9875aa;
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.10);
+
+  color: #795a88;
+
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.hero-project-btn:hover {
+  transform: translateY(-2px);
+
+  background: #8b69a0;
+  border-color: #8b69a0;
+
+  color: #ffffff;
+
+  box-shadow:
+    0 8px 24px rgba(105, 75, 123, 0.20);
+}
+
+body.dark .hero-project-btn {
+  border-color: #b08bc5;
+
+  background: rgba(90, 59, 118, 0.10);
+
+  color: #e1cbea;
+}
+
+body.dark .hero-project-btn:hover {
+  background: #76518d;
+  border-color: #9670aa;
+
+  color: #ffffff;
+
+  box-shadow:
+    0 10px 28px rgba(75, 43, 105, 0.35);
+}
+
+
+/* OPTIONAL ARROW INSIDE BUTTON */
+.hero-project-btn .btn-arrow {
+  font-size: 17px;
+  line-height: 1;
+
+  transition: transform 0.25s ease;
+}
+
+.hero-project-btn:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1050px) {
+
+  .navbar {
+    gap: 23px;
+    padding: 14px 28px;
+  }
+
+  .navbar a {
+    font-size: 13px;
+  }
+
+  .hero {
+    padding-left: 50px;
+    padding-right: 50px;
+
+    background-position: 62% center;
+  }
+
+  body.dark .hero {
+    background-position: 62% center;
+  }
+
+  .hero-content {
+    width: 56vw;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 760px) {
+
+  .navbar {
+    top: 15px;
+
+    width: calc(100% - 40px);
+    box-sizing: border-box;
+
+    justify-content: flex-start;
+
+    gap: 20px;
+
+    padding: 13px 20px;
+
+    overflow-x: auto;
+
+    scrollbar-width: none;
+  }
+
+  .navbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .navbar a {
+    white-space: nowrap;
+    font-size: 12px;
+  }
+
+
+  .hero {
+    min-height: 100svh;
+
+    padding:
+      115px
+      26px
+      55px;
+
+    align-items: center;
+
+    background-position: 65% center;
+    background-size: cover;
+  }
+
+  body.dark .hero {
+    background-position: 65% center;
+    background-size: cover;
+  }
+
+
+  .hero::before {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 246, 249, 0.97) 0%,
+      rgba(255, 246, 249, 0.88) 55%,
+      rgba(255, 246, 249, 0.45) 100%
+    );
+  }
+
+  body.dark .hero::before {
+    background: linear-gradient(
+      90deg,
+      rgba(15, 18, 38, 0.97) 0%,
+      rgba(15, 18, 38, 0.88) 55%,
+      rgba(15, 18, 38, 0.52) 100%
+    );
+  }
+
+
+  .hero-content {
+    width: 100%;
+    max-width: 540px;
+
+    transform: none;
+  }
+
+
+  .hero-content h1 {
+    font-size: clamp(43px, 12vw, 58px);
+
+    letter-spacing: -1.4px;
+  }
+
+  .hero-content h2 {
+    margin-top: 14px;
+
+    font-size: clamp(21px, 6vw, 27px);
+  }
+
+
+  .hero-specialties {
+    margin-top: 20px;
+
+    gap: 7px;
+
+    font-size: 13px;
+  }
+
+
+  .hero-project-btn {
+    margin-top: 28px;
+
+    padding: 11px 21px;
+
+    font-size: 13px;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 460px) {
+
+  .hero {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .hero-content h1 {
+    font-size: 42px;
+  }
+
+  .hero-specialties {
+    max-width: 340px;
+  }
+}
 
 
 @keyframes floatBg {
@@ -1097,21 +1490,41 @@ body.dark .sticker-logo img.monochrome {
 /* BUTTON */
 .contact-form button {
   width: fit-content;
-  padding: 10px 22px;
+  padding: 12px 24px;
 
-  border-radius: 20px;
-  border: none;
+  border: 1.5px solid #9875aa;
+  border-radius: 999px;
 
-  background: linear-gradient(45deg, var(--mauve), var(--grape));
-  color: white;
+  background: rgba(255, 255, 255, 0.10);
+  color: #795a88;
+
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
 
   cursor: pointer;
-  transition: 0.3s ease;
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .contact-form button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 25px #89718d;
+  transform: translateY(-2px);
+  background: #8b69a0;
+  border-color: #8b69a0;
+  color: #ffffff;
+  box-shadow: 0 8px 24px rgba(105, 75, 123, 0.20);
+}
+
+body.dark .contact-form button:hover {
+  transform: translateY(-2px);
+  background: #76518d;
+  border-color: #9670aa;
+  color: #ffffff;
+  box-shadow: 0 10px 28px rgba(75, 43, 105, 0.35);
 }
 
 /* ===== CARD ===== */
@@ -1578,7 +1991,7 @@ body.dark .cv-skill-item:hover {
 
 
 
-/* ===== COMPACT TWO-COLUMN SKILL BANNERS ===== */
+/* ===== SKILLS & TECHNOLOGIES ===== */
 #skills {
   position: relative;
   scroll-margin-top: 120px;
@@ -1595,30 +2008,22 @@ body.dark .cv-skill-item:hover {
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
-  align-items: start;
+  gap: 20px;
+  align-items: stretch;
   text-align: left;
 }
 
-.skills-column {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  min-width: 0;
-}
-
-.tech-skill-card,
-.tech-skill-card.compact-card {
+.tech-skill-card {
   --card-accent: #cdb4db;
 
   position: relative;
-  display: block;
-  height: auto !important;
-  min-height: 0 !important;
-  padding: 20px 22px 22px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 22px 24px 24px;
 
   border: 1px solid color-mix(in srgb, var(--card-accent) 46%, white 28%);
-  border-radius: 20px;
+  border-radius: 22px;
   background: #f5e9f3;
   box-shadow: none;
 
@@ -1650,13 +2055,10 @@ body.dark .cv-skill-item:hover {
   opacity: 0.76;
 }
 
-.skills-column:first-child .tech-skill-card:nth-child(1) { --card-accent: #c4acd8; }
-.skills-column:first-child .tech-skill-card:nth-child(2) { --card-accent: #aec5e8; }
-.skills-column:first-child .tech-skill-card:nth-child(3) { --card-accent: #e8c8b5; }
-
-.skills-column:last-child .tech-skill-card:nth-child(1) { --card-accent: #e4b2ca; }
-.skills-column:last-child .tech-skill-card:nth-child(2) { --card-accent: #d1b8e4; }
-.skills-column:last-child .tech-skill-card:nth-child(3) { --card-accent: #bcd1bc; }
+.tech-skill-card:nth-child(1) { --card-accent: #c4acd8; }
+.tech-skill-card:nth-child(2) { --card-accent: #aec5e8; }
+.tech-skill-card:nth-child(3) { --card-accent: #e4b2ca; }
+.tech-skill-card:nth-child(4) { --card-accent: #d1b8e4; }
 
 .tech-skill-card:hover,
 .tech-skill-card:focus-within {
@@ -1700,8 +2102,7 @@ body.dark .cv-skill-item:hover {
   display: none;
 }
 
-.skill-pill-list,
-.tech-skill-card.compact-card .skill-pill-list {
+.skill-pill-list {
   display: flex;
   flex-wrap: wrap;
   align-content: flex-start;
@@ -1743,8 +2144,7 @@ body.dark .cv-skill-item:hover {
 }
 
 /* Dark mode */
-body.dark .tech-skill-card,
-body.dark .tech-skill-card.compact-card {
+body.dark .tech-skill-card {
   background: linear-gradient(135deg, #1a1430, #241a3b);
   border-color: color-mix(in srgb, var(--card-accent) 30%, transparent);
 }
@@ -1775,9 +2175,6 @@ body.dark .skill-pill:hover {
     grid-template-columns: 1fr;
   }
 
-  .skills-column {
-    gap: 16px;
-  }
 }
 
 @media (max-width: 560px) {
@@ -1789,8 +2186,7 @@ body.dark .skill-pill:hover {
     margin-bottom: 30px;
   }
 
-  .tech-skill-card,
-  .tech-skill-card.compact-card {
+  .tech-skill-card {
     padding: 19px 19px 20px;
     border-radius: 18px;
   }
@@ -1816,42 +2212,61 @@ body.dark .skill-pill:hover {
 <div class="blob blob1"></div>
 <!-- NAVBAR -->
 <nav class="navbar">
-<a href="#home">Home</a>
-<a href="#about">About</a>
-<a href="#education">Education</a>
-<a href="#experience">Experience</a>
-<a href="#skills">Skills</a>
-<a href="#projects">Projects</a>
-<a href="#contact">Contact</a>
+  <a href="#home">Home</a>
+  <a href="#about">About</a>
+  <a href="#experience">Experience</a>
+  <a href="#projects">Projects</a>
+  <a href="#skills">Skills</a>
+  <a href="#education">Education</a>
+  <a href="#contact">Contact</a>
 </nav>
 <!-- HERO -->
 <section class="hero" id="home">
-<div class="hero-content">
-<h1>Hi, I'm Raounak El Gourma</h1>
-<h2>AI &amp; Computer Vision Engineer</h2>
-<button onclick="location.href='#projects'">View Projects</button>
-</div>
+
+  <div class="hero-content">
+
+    <h1>Raounak El Gourma</h1>
+
+    <h2>AI &amp; Machine Learning Engineer</h2>
+
+    <div class="hero-specialties">
+      <span>Computer Vision</span>
+      <span class="dot">•</span>
+      <span>Machine Learning</span>
+      <span class="dot">•</span>
+      <span>Generative AI</span>
+    </div>
+
+    <a class="hero-project-btn" href="#projects">
+      View Projects
+      <span class="btn-arrow">→</span>
+    </a>
+
+  </div>
+
 </section>
-<div class="wave-top">
-<svg preserveaspectratio="none" viewbox="0 0 1440 200">
-<path d="M0,120 C300,40 600,200 900,120 C1200,40 1400,160 1440,120 L1440,200 L0,200 Z"></path>
-</svg>
-</div>
 <!-- ABOUT -->
 <section id="about">
-<h1>A little About Me </h1>
+<h1>About Me </h1>
 <div class="about-box">
 <div class="about-left">
 <img src="photonoback.png"/>
 </div>
 <div class="about-right">
-<p>
-        I’m an AI &amp; Computer Vision Engineer passionate about building intelligent systems.  
-        I work on real-world projects using AI to solve impactful problems.
-      </p>
-<p>
-        Currently, I specialize in computer vision applications, including object detection, image analysis, and intelligent visual systems.
-      </p>
+
+  <p>
+    I'm an AI and Machine Learning graduate interested in turning data
+    and models into practical intelligent applications. My background spans
+    Computer Vision, Deep Learning, Data Science and Generative AI.
+  </p>
+
+  <p>
+    I've worked on projects involving multi-camera tracking and person Re-ID,
+    OCR, medical image classification, NLP, machine learning and
+    Retrieval-Augmented Generation, with experience across data preparation,
+    model training, evaluation and application integration.
+  </p>
+
 </div>
 </div>
 </section>
@@ -1864,13 +2279,16 @@ body.dark .skill-pill:hover {
 <i class="fas fa-graduation-cap"></i>
 </div>
 <div class="education-content">
+<!-- MASTER -->
 <div class="education-year">2024 – 2026</div>
+
 <div class="education-title">
-          Master of Excellence in Artificial Intelligence &amp; IoT (AI Track)
-        </div>
+  Master of Excellence in Artificial Intelligence &amp; Internet of Things — AI Track
+</div>
+
 <div class="education-sub">
-          Center of Excellence in Automotive &amp; Aeronautics, Faculty of Sciences, Kenitra
-        </div>
+  Faculty of Sciences, Ibn Tofail University — Kenitra, Morocco
+</div>
 </div>
 </div>
 <div class="education-item">
@@ -1878,13 +2296,16 @@ body.dark .skill-pill:hover {
 <i class="fas fa-graduation-cap"></i>
 </div>
 <div class="education-content">
+<!-- BACHELOR -->
 <div class="education-year">2023 – 2024</div>
+
 <div class="education-title">
-          Bachelor of Excellence in Artificial Intelligence &amp; Data Engineering
-        </div>
+  Bachelor of Excellence in Artificial Intelligence &amp; Data Engineering
+</div>
+
 <div class="education-sub">
-          Center of Excellence in Automotive &amp; Aeronautics, Faculty of Sciences, Kenitra
-        </div>
+  Faculty of Sciences, Ibn Tofail University — Kenitra, Morocco
+</div>
 </div>
 </div>
 <div class="education-item">
@@ -1892,13 +2313,16 @@ body.dark .skill-pill:hover {
 <i class="fas fa-graduation-cap"></i>
 </div>
 <div class="education-content">
+<!-- DUT -->
 <div class="education-year">2021 – 2023</div>
+
 <div class="education-title">
-          DUT in Embedded Computer Engineering
-        </div>
+  University Diploma of Technology (DUT) in Embedded Computer Engineering
+</div>
+
 <div class="education-sub">
-          Higher School of Technology (EST), Oujda
-        </div>
+  Higher School of Technology — Oujda, Morocco
+</div>
 </div>
 </div>
 <div class="education-item">
@@ -1906,13 +2330,16 @@ body.dark .skill-pill:hover {
 <i class="fas fa-graduation-cap"></i>
 </div>
 <div class="education-content">
+<!-- BACCALAUREATE -->
 <div class="education-year">2021</div>
+
 <div class="education-title">
-          Baccalauréat in Physical Sciences and Chemistry
-        </div>
+  Baccalaureate in Physical and Chemical Sciences
+</div>
+
 <div class="education-sub">
-          Lycée Omar Ibn Abdel-Aziz, Oujda
-        </div>
+  Omar Ibn Abdel-Aziz High School — Oujda, Morocco
+</div>
 </div>
 </div>
 </div>
@@ -1926,10 +2353,31 @@ body.dark .skill-pill:hover {
 <h3>Computer Vision Engineer Intern — Final-Year Project</h3>
 <h4>Nextronic / ABA Technology — Casablanca</h4>
 <ul class="exp-details">
-<li>Designed and developed <strong>TrackWear</strong> as my final-year project, a multi-camera surveillance system for real-time clothing attribute recognition and biometric-free person re-identification across fisheye and top-view cameras.</li>
-<li>Fine-tuned <strong>YOLOv8m</strong> for person detection and integrated <strong>ByteTrack</strong> for stable multi-object tracking and track lifecycle management.</li>
-<li>Built a modular visual analysis pipeline using <strong>EfficientNet B2/B3</strong>, <strong>OpenCLIP</strong>, KMeans in LAB color space, and <strong>OSNet</strong> embeddings with cosine similarity for cross-camera matching.</li>
-<li>Engineered the end-to-end detection, tracking, classification, storage, and monitoring pipeline with <strong>SQLite</strong>, <strong>Streamlit</strong>, and live <strong>RTSP</strong> preview.</li>
+
+  <li>
+    Designed and developed <strong>TrackWear</strong>, a multi-camera
+    computer vision system for person detection, tracking, visual attribute
+    analysis and cross-camera re-identification without facial recognition.
+  </li>
+
+  <li>
+    Trained and evaluated <strong>YOLOv8</strong>,
+    <strong>EfficientNet</strong> and <strong>OSNet</strong> models
+    on custom CCTV datasets captured from fisheye and top-view cameras.
+  </li>
+
+  <li>
+    Built an end-to-end pipeline combining
+    <strong>ByteTrack</strong>, clothing classification,
+    color analysis, head attribute recognition and person Re-ID.
+  </li>
+
+  <li>
+    Integrated the system using <strong>PyTorch</strong>,
+    <strong>OpenCV</strong>, <strong>Streamlit</strong>,
+    <strong>RTSP</strong> video streams and <strong>SQLite</strong>.
+  </li>
+
 </ul>
 </div>
 <div class="exp-item">
@@ -1937,28 +2385,31 @@ body.dark .skill-pill:hover {
 <h3>Deep Learning &amp; Computer Vision Intern</h3>
 <h4>EMS Maroc — Kenitra</h4>
 <p>
-        Built datasets for Moroccan license plates and SIM detection, applied
-        preprocessing and augmentation, and developed a YOLO + OCR pipeline
-        for real-time detection with a web demo interface.
-      </p>
+  Collected, cleaned, annotated and augmented image datasets for
+  Moroccan license plate recognition and phone-number extraction
+  from SIM cards. Developed a YOLOv8 + OCR pipeline using EasyOCR
+  and OpenCV and integrated it into a Flask application.
+</p>
 </div>
 <div class="exp-item">
 <span class="exp-date">Jul – Aug 2025</span>
 <h3>Data Science Intern</h3>
 <h4>Omni Consulting — Rabat</h4>
 <p>
-        Developed an AI-powered CV matching system to compare resumes with job
-        descriptions and assist automated HR pre-screening.
-      </p>
+  Developed an NLP-based CV-to-job matching system using
+  unstructured text processing, skill extraction and interpretable
+  matching scores to support candidate pre-screening.
+</p>
 </div>
 <div class="exp-item">
 <span class="exp-date">Jul 2024</span>
 <h3>Deep learning Intern</h3>
 <h4>CHU Oujda</h4>
 <p>
-        Contributed to a CNN model for diabetic retinopathy detection,
-        including preprocessing and evaluation of medical imaging datasets.
-      </p>
+  Developed and evaluated a CNN-based diabetic retinopathy
+  classification system using retinal images, including preprocessing,
+  data augmentation, model training and error analysis.
+</p>
 </div>
 <div class="exp-item">
 <span class="exp-date">Apr – May 2023</span>
@@ -1970,7 +2421,7 @@ body.dark .skill-pill:hover {
       </p>
 </div>
 <div class="exp-item">
-<span class="exp-date">Jun 2021</span>
+<span class="exp-date">Jun 2022</span>
 <h3>Initiation Intern</h3>
 <h4>Attawfiq Micro-Finance</h4>
 <p>
@@ -1985,102 +2436,86 @@ body.dark .skill-pill:hover {
 <section id="skills">
   <h1>Skills &amp; Technologies</h1>
 
-  
-<div class="tech-skills-grid">
-  <div class="skills-column">
-    <article class="tech-skill-card" style="--card-accent:#c8b0dc;">
+  <div class="tech-skills-grid">
+    <article class="tech-skill-card">
       <div class="tech-card-head">
+        <i data-lucide="scan-eye" aria-hidden="true"></i>
         <h3>Computer Vision</h3>
-        <i data-lucide="scan-eye"></i>
       </div>
       <div class="skill-pill-list">
-        <span class="skill-pill">OpenCV</span>
         <span class="skill-pill">YOLOv8 / YOLO11</span>
-        <span class="skill-pill">CNN Architectures</span>
+        <span class="skill-pill">OpenCV</span>
         <span class="skill-pill">ByteTrack</span>
-        <span class="skill-pill">Person Re-ID</span>
-        <span class="skill-pill">OCR</span>
+        <span class="skill-pill">EfficientNet</span>
+        <span class="skill-pill">OSNet</span>
+        <span class="skill-pill">EasyOCR</span>
         <span class="skill-pill">Object Detection</span>
         <span class="skill-pill">Image Classification</span>
-        <span class="skill-pill">Video Processing</span>
+        <span class="skill-pill">Person Re-ID</span>
+        <span class="skill-pill">Multi-Object Tracking</span>
       </div>
     </article>
-    <article class="tech-skill-card" style="--card-accent:#b9cbed;">
-      <div class="tech-card-head">
-        <h3>Data Science</h3>
-        <i data-lucide="chart-no-axes-combined"></i>
-      </div>
-      <div class="skill-pill-list">
-        <span class="skill-pill">NumPy</span>
-        <span class="skill-pill">Pandas</span>
-        <span class="skill-pill">Scikit-learn</span>
-        <span class="skill-pill">Matplotlib</span>
-        <span class="skill-pill">Seaborn</span>
-        <span class="skill-pill">EDA</span>
-      </div>
-    </article>
-    <article class="tech-skill-card compact-card" style="--card-accent:#efd1bd;">
-      <div class="tech-card-head">
-        <h3>Databases</h3>
-        <i data-lucide="database"></i>
-      </div>
-      <div class="skill-pill-list">
-        <span class="skill-pill">SQLite</span>
-        <span class="skill-pill">MySQL</span>
-        <span class="skill-pill">SQL</span>
-      </div>
-    </article>
-  </div>
 
-  <div class="skills-column">
-    <article class="tech-skill-card" style="--card-accent:#e9b9ce;">
+    <article class="tech-skill-card">
       <div class="tech-card-head">
-        <h3>Deep Learning &amp; GenAI</h3>
-        <i data-lucide="sparkles"></i>
+        <i data-lucide="brain-circuit" aria-hidden="true"></i>
+        <h3>AI &amp; Machine Learning</h3>
       </div>
       <div class="skill-pill-list">
         <span class="skill-pill">PyTorch</span>
-        <span class="skill-pill">TensorFlow</span>
-        <span class="skill-pill">Keras</span>
-        <span class="skill-pill">Hugging Face</span>
-        <span class="skill-pill">OpenCLIP</span>
+        <span class="skill-pill">TensorFlow / Keras</span>
+        <span class="skill-pill">Scikit-learn</span>
+        <span class="skill-pill">CNNs</span>
+        <span class="skill-pill">Classification</span>
+        <span class="skill-pill">Regression</span>
+        <span class="skill-pill">Clustering</span>
+        <span class="skill-pill">Feature Engineering</span>
+        <span class="skill-pill">Transfer Learning</span>
+        <span class="skill-pill">Fine-Tuning</span>
+        <span class="skill-pill">Model Evaluation</span>
+      </div>
+    </article>
+
+    <article class="tech-skill-card">
+      <div class="tech-card-head">
+        <i data-lucide="sparkles" aria-hidden="true"></i>
+        <h3>Generative AI &amp; NLP</h3>
+      </div>
+      <div class="skill-pill-list">
         <span class="skill-pill">LLMs</span>
+        <span class="skill-pill">RAG</span>
+        <span class="skill-pill">LangChain</span>
+        <span class="skill-pill">Hugging Face</span>
+        <span class="skill-pill">Sentence Transformers</span>
+        <span class="skill-pill">Embeddings</span>
+        <span class="skill-pill">Semantic Search</span>
+        <span class="skill-pill">ChromaDB</span>
         <span class="skill-pill">Prompt Engineering</span>
-        <span class="skill-pill">Generative AI</span>
         <span class="skill-pill">Ollama</span>
       </div>
     </article>
-    <article class="tech-skill-card" style="--card-accent:#d7c0ea;">
+
+    <article class="tech-skill-card">
       <div class="tech-card-head">
-        <h3>Web &amp; APIs</h3>
-        <i data-lucide="braces"></i>
-      </div>
-      <div class="skill-pill-list">
-        <span class="skill-pill">FastAPI</span>
-        <span class="skill-pill">Flask</span>
-        <span class="skill-pill">Streamlit</span>
-        <span class="skill-pill">REST APIs</span>
-        <span class="skill-pill">HTML / CSS</span>
-      </div>
-    </article>
-    <article class="tech-skill-card" style="--card-accent:#c7d8c6;">
-      <div class="tech-card-head">
-        <h3>Code &amp; Tools</h3>
-        <i data-lucide="code-2"></i>
+        <i data-lucide="terminal" aria-hidden="true"></i>
+        <h3>Development &amp; Data</h3>
       </div>
       <div class="skill-pill-list">
         <span class="skill-pill">Python</span>
-        <span class="skill-pill">C / C++</span>
-        <span class="skill-pill">Java</span>
-        <span class="skill-pill">Git</span>
-        <span class="skill-pill">GitHub</span>
-        <span class="skill-pill">VS Code</span>
-        <span class="skill-pill">Jupyter</span>
+        <span class="skill-pill">SQL</span>
+        <span class="skill-pill">Pandas</span>
+        <span class="skill-pill">NumPy</span>
+        <span class="skill-pill">FastAPI</span>
+        <span class="skill-pill">Flask</span>
+        <span class="skill-pill">Streamlit</span>
+        <span class="skill-pill">SQLite</span>
+        <span class="skill-pill">MySQL</span>
+        <span class="skill-pill">Git / GitHub</span>
         <span class="skill-pill">Linux</span>
+        <span class="skill-pill">Jupyter</span>
       </div>
     </article>
   </div>
-</div>
 
 </section>
 <!-- PROJECTS -->
@@ -2092,7 +2527,29 @@ body.dark .skill-pill:hover {
 <span>«</span>
 </div>
 <!-- PROJECTS -->
+
 <div class="projects-container" id="projectsScroll">
+<div class="project-card featured-project">
+
+  <h3>TrackWear</h3>
+
+  <p>
+    Multi-camera computer vision system for detecting, tracking and
+    re-identifying individuals through clothing and visual attributes
+    without facial recognition.
+  </p>
+
+  <div class="skills">
+    <span>YOLOv8</span>
+    <span>ByteTrack</span>
+    <span>EfficientNet</span>
+    <span>OSNet</span>
+    <span>PyTorch</span>
+    <span>OpenCV</span>
+    <span>Streamlit</span>
+  </div>
+
+</div>
 <div class="project-card">
 <h3>Plate &amp; SIM Recognition</h3>
 <p>Flask-based web application combining YOLOv8 and EasyOCR for real-time license plate and SIM card number detection from images and live streams.
@@ -2138,7 +2595,7 @@ body.dark .skill-pill:hover {
 </div>
 </div>
 <div class="project-card">
-<h3>CV Matcher</h3>
+<h3>AI-Based CV Matching & Scoring System</h3>
 <p>
             AI system for CV-job matching using TF-IDF, cosine similarity, and LSA to rank candidates based on skill and semantic relevance.
         </p>
@@ -2158,7 +2615,7 @@ body.dark .skill-pill:hover {
 </section>
 <!-- CONTACT -->
 <section class="contact-section" id="contact">
-<h1>Send Me Your Message</h1>
+<h1>Get In Touch</h1>
 <div class="contact-wrapper">
 <!-- FORM -->
 <form action="https://formspree.io/f/xqegwddp" class="contact-form" id="contactForm" method="POST">
